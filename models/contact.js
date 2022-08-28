@@ -3,24 +3,27 @@ const Joi = require('joi');
 
 const { handleSchemaValidationErrors } = require('../helpers');
 
-const contactSchema = new Schema({
-  name: {
-    type: String,
-    required: [true, 'Set name for contact'],
-    unique: true,
+const contactSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'Set name for contact'],
+      unique: true,
+    },
+    email: {
+      type: String,
+    },
+    phone: {
+      type: String,
+      unique: true,
+    },
+    favorite: {
+      type: Boolean,
+      default: false,
+    },
   },
-  email: {
-    type: String,
-  },
-  phone: {
-    type: String,
-    unique: true,
-  },
-  favorite: {
-    type: Boolean,
-    default: false,
-  },
-});
+  { versionKey: false, timestamps: true },
+);
 
 contactSchema.post('save', handleSchemaValidationErrors);
 
