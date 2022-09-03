@@ -10,7 +10,7 @@ const { schemas } = require('../../models/contact');
 
 const router = express.Router();
 
-router.get('/', ctrlWrapper(ctrl.listContacts));
+router.get('/', authenticate, ctrlWrapper(ctrl.listContacts));
 
 router.get('/:id', isValidId, ctrlWrapper(ctrl.getContactById));
 

@@ -19,12 +19,10 @@ const userSchema = new Schema(
       minlength: 6,
       required: [true, 'Set password for user'],
     },
-    subscription: {
+    token: {
       type: String,
-      enum: ['starter', 'pro', 'business'],
-      default: 'starter',
+      default: '',
     },
-    token: String,
   },
   { versionKey: false, timestamps: true },
 );
